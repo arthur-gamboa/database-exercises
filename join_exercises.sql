@@ -62,6 +62,23 @@ SELECT d.dept_name AS 'Department Name', CONCAT(e.first_name, ' ', e.last_name) 
 FROM departments AS d
 JOIN dept_manager dm ON d.dept_no = dm.dept_no
 JOIN employees e on dm.emp_no = e.emp_no
-WHERE dm.to_date = '9999-01-01'
+WHERE dm.to_date = '9999-01-01' AND e.gender = 'F'
 ORDER BY d.dept_name;
 
+
+SELECT t.title AS 'Title', COUNT(*) AS 'Head Count'
+FROM employees e
+JOIN dept_emp de ON e.emp_no = de.emp_no
+JOIN departments d ON d.dept_no = de.dept_no
+JOIN titles t ON e.emp_no = t.emp_no
+WHERE de.to_date > NOW() AND t.to_date > NOW() AND d.dept_name = 'Customer Service'
+GROUP BY t.title;
+
+
+SELECT d.dept_name AS 'Department Name', CONCAT(e.first_name, ' ', e.last_name) AS 'Department Manager', s.salary AS 'Salary'
+FROM departments d
+JOIN dept_manager dm ON d.dept_no = dm.dept_no
+JOIN employees e ON dm.emp_no = e.emp_no
+JOIN salaries s ON e.emp_no = s.emp_no
+WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
+ORDER BY d.dept_name;
