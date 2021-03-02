@@ -82,3 +82,4 @@ JOIN employees e ON dm.emp_no = e.emp_no
 JOIN salaries s ON e.emp_no = s.emp_no
 WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
 ORDER BY d.dept_name;
+
