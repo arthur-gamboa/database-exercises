@@ -25,4 +25,4 @@ WHERE emp_no IN (
     SELECT emp_no
     FROM dept_manager
     WHERE to_date > NOW() AND gender = 'F'
-    );
+);
